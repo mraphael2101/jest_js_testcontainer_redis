@@ -1,0 +1,17 @@
+{
+  "devDependencies": {
+    "jasmine": "^4.5.0",
+    "jest": "28.1.0",
+    "supertest": "^6.3.2",
+    "testcontainers": "^8.10.1"
+  },
+  "dependencies": {
+    "expect": "^29.3.1",
+    "ioredis": "^5.2.4",
+    "mongodb": "^4.12.1",
+    "mongoose": "^6.8.0"
+  },
+  "scripts": {
+    "test": "jest --verbose"
+  }
+}
