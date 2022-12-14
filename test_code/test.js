@@ -16,11 +16,11 @@ describe("Leverage Redis Testcontainer", () => {
         /** The framework's basic building block is generic container which is an
          abstraction that represents the container to be managed via Testcontainers
          -> What is happening under the hood:
-         - It configures the Docker SDK
-         - Pushes the request to the Docker API
-         - When the container is ready we get back the Redis container
-           with a bunch of utilities and APIs that are designed to run
-           inside a test */
+            - It configures the Docker SDK
+            - Pushes the request to the Docker API
+            - When the container is ready we get back the Redis container
+              with a bunch of utilities and APIs that are designed to run
+              inside a test */
         container = await new GenericContainer("redis")
             /** How to copy a file to a container before it is started e.g. instantiate
              your db schema by sending it into your container */
