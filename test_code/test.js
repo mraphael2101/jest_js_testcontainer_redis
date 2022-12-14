@@ -12,15 +12,22 @@ describe("GenericContainer Test", () => {
     // Utilising hook to create the container before all tests
     beforeAll(async () => {
         /** The framework's basic building block is generic container which is an
-            abstraction that represents the container to be managed via Testcontainers */
+            abstraction that represents the container to be managed via Testcontainers
+            -> What is happening under the hood:
+                 - Configures the Docker SDK
+                 - Pushes the request to the Docker API
+                 - When the container is ready we get back the redis container
+                   with a bunch of utilities and APIs that are designed to run
+                   inside a test
+         */
         container = await new GenericContainer("redis")
             /** How to copy a file to a container before it is started e.g. instantiate
              your db schema by sending it into your container */
             // .withCopyContentToContainer(
             //     "hello world",
             //     "/remote/file2.txt")
-            .withExposedPorts(6379)
-            .start();   // Lifecycle management
+            .withExposedPorts(6379) // Redis exposes port 6379 so we need to open it
+            .start();   // Lifecycle management -> we can start it now or later on if required
 
         redisClient = new Redis(
             container.getMappedPort(6379),
