@@ -1,6 +1,8 @@
 /** Our application needs to talk to the technology which in this case is Redis.
  *  We don't hardcode any configuration. Instead, we use a Generic Container Instance
- *  to provide information where it is running so that we can configure our app properly */
+ *  to provide information where it is running so that we can configure our app properly.
+ *  To learn more about Redis features see the below tutorial */
+// TODO https://www.tutorialspoint.com/redis/redis_commands.htm
 
 const Redis = require("ioredis");   // In this example, ioredis is the docker image name
 const {GenericContainer} = require("testcontainers");
