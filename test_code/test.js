@@ -34,6 +34,13 @@ describe("Leverage Redis Testcontainer", () => {
             container.getMappedPort(6379),
             container.getHost(),
         );
+
+        const resp = await redisClient.ping()   // Command PING checks whether the server is running or not
+        if(resp != 'PONG') {
+            expect(resp).toBe("PONG")
+        } else {
+            console.log("Redis Server is Available and Ready")
+        }
     });
 
     // Always clean-up after the container runs
@@ -44,8 +51,6 @@ describe("Leverage Redis Testcontainer", () => {
     });
 
     it("Test to set and retrieve values from Redis", async () => {
-        const resp = await redisClient.ping()   // Command PING checks whether the server is running or not
-        console.log(resp)
         await redisClient.set("key", "val")
         expect(await redisClient.get("key")).toBe("val")
     });
